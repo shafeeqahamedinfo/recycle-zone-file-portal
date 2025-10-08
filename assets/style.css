@@ -1,0 +1,230 @@
+/* Base Styles */
+html, body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Arial, Helvetica, sans-serif; background: #f4f4f8; color: #222; line-height: 1.5; }
+a { text-decoration: none; }
+.container { max-width: 980px; margin: 28px auto; padding: 12px; }
+
+/* Header */
+.header {
+  background: linear-gradient(90deg,#111,#333);
+  color: #fff;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.header .brand { font-weight: 700; letter-spacing: 1px; font-size: 1.3rem; }
+.header .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* Buttons */
+.btn {
+  background: #222;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 8px;
+  display: inline-block;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(.4,0,.2,1), box-shadow 0.2s ease, background 0.2s ease;
+}
+.btn:hover { 
+  transform: translateY(-4px) scale(1.03); 
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15); 
+  background: #333;
+}
+
+/* Cards */
+.card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(10,10,20,0.06);
+  padding: 18px;
+  margin-bottom: 18px;
+  overflow: hidden;
+  animation: pop 0.25s ease forwards;
+  transform-origin: center bottom;
+}
+
+/* Forms */
+.form-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 10px; }
+.input { padding: 10px; border-radius: 8px; border: 1px solid #ddd; flex: 1; min-width: 120px; transition: border 0.2s ease, box-shadow 0.2s ease; }
+.input:focus { border-color: #D4AF37; box-shadow: 0 0 6px rgba(212,175,55,0.3); }
+.small { font-size: 13px; color: #666; }
+.notice { padding: 10px; border-radius: 8px; background: #fffbe6; border: 1px solid #ffe59e; margin-top: 12px; }
+
+/* File List */
+.file-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; margin-top: 12px; }
+.file-card {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  background: linear-gradient(180deg,#fff,#fafafa);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.file-card:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 10px 20px rgba(0,0,0,0.12); }
+.meta { font-size: 12px; color: #666; margin-top: 8px; }
+
+/* Animations */
+@keyframes pop { 
+  0% { transform: scale(0.95); opacity: 0; } 
+  60% { transform: scale(1.02); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; } 
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  body .header { flex-direction: column; align-items: flex-start; gap: 10px; }
+  body .header .actions { flex-direction: column; width: 100%; }
+  body .btn { width: 100%; text-align: center; }
+  body .file-list { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+  body .form-row { flex-direction: column; }
+  body .input { width: 100%; }
+}
+
+@media (max-width: 480px) {
+  .card { padding: 12px; }
+  .header .brand { font-size: 1.1rem; }
+  .btn { padding: 10px; font-size: 0.85rem; }
+  .file-card { padding: 10px; }
+}
+
+ Mobile Slide Menu 
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  user-select: none;
+}/*
+@media (max-width: 768px) {
+  .menu-toggle { display: block; }
+  .header .actions {
+    position: fixed;
+    top: 0; right: -250px;
+    height: 100%;
+    width: 220px;
+    background: #222;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 60px 20px;
+    gap: 12px;
+    transition: right 0.25s ease;
+    z-index: 999;
+  }
+  .header .actions.open { right: 0; }
+  .header .actions .btn, .header .actions span.btn { width: 100%; text-align: left; }
+}
+
+/* Home Page Cards Grid */
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.home-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(10,10,20,0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  color: #222;
+  animation: pop 0.3s ease forwards;
+}
+
+.home-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+  color: #D4AF37; /* gold highlight */
+  transition: transform 0.3s ease;
+}
+
+.home-card:hover .card-icon {
+  transform: rotate(10deg) scale(1.1);
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.card-desc {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Responsive tweaks */
+@media(max-width: 480px){
+  .home-card { padding: 16px; }
+  .card-icon { font-size: 2rem; }
+  .card-title { font-size: 1rem; }
+  .card-desc { font-size: 0.85rem; }
+}
+
+/* Cards - Staggered Entrance */
+.card, .home-card {
+  opacity: 0;
+  animation: pop 0.4s ease forwards;
+  transform-origin: center bottom;
+}
+
+/* Automatically stagger cards based on their order */
+.card:nth-child(1), .home-card:nth-child(1) { animation-delay: 0.05s; }
+.card:nth-child(2), .home-card:nth-child(2) { animation-delay: 0.1s; }
+.card:nth-child(3), .home-card:nth-child(3) { animation-delay: 0.15s; }
+.card:nth-child(4), .home-card:nth-child(4) { animation-delay: 0.2s; }
+.card:nth-child(5), .home-card:nth-child(5) { animation-delay: 0.25s; }
+.card:nth-child(6), .home-card:nth-child(6) { animation-delay: 0.3s; }
+.card:nth-child(7), .home-card:nth-child(7) { animation-delay: 0.35s; }
+.card:nth-child(8), .home-card:nth-child(8) { animation-delay: 0.4s; }
+/* Add more as needed or use JavaScript for dynamic lists */
+
+/* Animation keyframes */
+@keyframes pop { 
+  0% { transform: scale(0.95); opacity: 0; } 
+  60% { transform: scale(1.02); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; } 
+}
+
+.footer {
+  background-color: #222;
+  color: #fff;
+  text-align: center;
+  padding: 14px 0;
+  margin-top: 150px;
+  font-size: 0.9rem;
+}
+
+.footer p {
+  margin: 0;
+}
+
+@media(max-width:480px){
+  .footer {
+    font-size: 0.8rem;
+    padding: 12px 0;
+  }
+}
